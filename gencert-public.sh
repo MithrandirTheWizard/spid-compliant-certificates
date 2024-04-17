@@ -131,7 +131,7 @@ IPA_CODE=$(echo ${ORGANIZATION_IDENTIFIER} | sed -e "s/PA:IT-//g")
 JSON1='{"paginazione":{"campoOrdinamento":"codAoo","tipoOrdinamento":"asc","paginaRichiesta":1,"numTotalePagine":null,"numeroRigheTotali":null,"paginaCorrente":null,"righePerPagina":null},"codiceFiscale":null,"codUniAoo":null,"desAoo":null,"denominazioneEnte":null,"codEnte":"'
 JSON2='","codiceCategoria":null,"area":null}'
 JSON="${JSON1}${IPA_CODE}${JSON2}"
-if curl -X POST https://indicepa.gov.it/PortaleServices/api/aoo -H "Content-Type: application/json" -d ${JSON} | grep -qv '"numeroRigheTotali":1'; then
+if curl -X POST https://indicepa.gov.it/PortaleServices/api/aoo -H "Content-Type: application/json" -d ${JSON} | grep -qv '"codEnte":"'${IPA_CODE}'"'; then
     die "[E] ORGANIZATION_IDENTIFIER refers to something that does not exists \n [I] Check it by yourself at ${CHECK_URL}"
 fi
 
