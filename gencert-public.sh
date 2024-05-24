@@ -132,7 +132,7 @@ JSON1='{"paginazione":{"campoOrdinamento":"codAoo","tipoOrdinamento":"asc","pagi
 JSON2='","codiceCategoria":null,"area":null}'
 JSON="${JSON1}${IPA_CODE}${JSON2}"
 if curl -X POST https://indicepa.gov.it/PortaleServices/api/aoo -H "Content-Type: application/json" -d ${JSON} | grep -qv '"codEnte":"'${IPA_CODE}'"'; then
-    die "[E] ORGANIZATION_IDENTIFIER refers to something that does not exists \n [I] Check it by yourself at ${CHECK_URL}"
+    die "[E] ORGANIZATION_IDENTIFIER refers to something that does not exists on IPA"
 fi
 
 # check ORGANIZATION_NAME
